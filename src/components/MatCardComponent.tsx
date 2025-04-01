@@ -8,7 +8,7 @@ interface MatCardComponentProps {
   style?: React.CSSProperties;
 }
 
-export function MatCardComponent({ 
+export default function MatCardComponent({ 
   title, 
   subtitle, 
   content, 
