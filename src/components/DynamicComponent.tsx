@@ -17,11 +17,11 @@ interface DynamicComponentProps {
 
 export function DynamicComponent({ component, inputs, styles }: DynamicComponentProps) {
   const Component = components[component as keyof typeof components];
-  
+
   if (!Component) {
     console.warn(`Component ${component} not found`);
     return null;
   }
 
-  return <Component {...inputs} style={styles} />;
+  return <Component {...(inputs as any)} style={styles} />;
 }
