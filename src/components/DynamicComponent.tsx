@@ -1,27 +1,36 @@
 import { ComponentStyles } from '../types/ui-config';
-import { HeroComponent } from './HeroComponent';
-import { MatCardComponent } from './MatCardComponent';
-import { NavigationComponent } from './NavigationComponent';
+import { lazy, Suspense } from 'react';
 
+// Lazy load components
 const components = {
-  HeroComponent,
-  MatCardComponent,
-  NavigationComponent,
+  HeroComponent: lazy(() => import('./HeroComponent')),
+  MatCardComponent: lazy(() => import('./MatCardComponent')),
+  NavigationComponent: lazy(() => import('./NavigationComponent')),
 } as const;
 
-interface DynamicComponentProps {
-  component: string;
-  inputs: Record<string, unknown>;
+export type ComponentName = keyof typeof components;
+
+interface DynamicComponentProps<T extends ComponentName> {
+  component: T;
+  inputs: any; // Note: We're temporarily using 'any' here as type safety is handled at the JSON schema level
   styles?: ComponentStyles;
 }
 
-export function DynamicComponent({ component, inputs, styles }: DynamicComponentProps) {
-  const Component = components[component as keyof typeof components];
-
+export function DynamicComponent<T extends ComponentName>({ 
+  component, 
+  inputs, 
+  styles 
+}: DynamicComponentProps<T>) {
+  const Component = components[component];
+  
   if (!Component) {
     console.warn(`Component ${component} not found`);
     return null;
   }
 
-  return <Component {...(inputs as any)} style={styles} />;
+  return (
+    <Suspense fallback={<div>Loading component...</div>}>
+      <Component {...inputs} style={styles} />
+    </Suspense>
+  );
 }
