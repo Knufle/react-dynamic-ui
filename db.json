@@ -1,0 +1,224 @@
+{
+    "ui-data": {
+        "pages": [
+            {
+                "path": "home",
+                "title": "Home",
+                "sections": [
+                    {
+                        "type": "component",
+                        "component": "NavigationComponent",
+                        "inputs": {
+                            "navigation": {
+                                "title": "Dynamic UI Demo",
+                                "links": [
+                                    { "path": "home", "label": "Home" },
+                                    { "path": "features", "label": "Features" },
+                                    { "path": "testimonials", "label": "Testimonials" }
+                                ]
+                            }
+                        },
+                        "styles": {
+                            "marginBottom": "2rem"
+                        }
+                    },
+                    {
+                        "type": "component",
+                        "component": "HeroComponent",
+                        "inputs": {
+                            "title": "Dynamic UI Builder",
+                            "subtitle": "Create stunning, flexible UIs with JSON-driven layouts and components",
+                            "ctaText": "Get Started Today"
+                        },
+                        "styles": {
+                            "backgroundColor": "#f0f8ff",
+                            "padding": "40px 20px",
+                            "borderRadius": "0 0 20px 20px"
+                        }
+                    },
+                    {
+                        "type": "component",
+                        "component": "MatCardComponent",
+                        "styles": {
+                            "margin": "40px auto",
+                            "maxWidth": "800px"
+                        },
+                        "inputs": {
+                            "title": "Welcome to Dynamic UI",
+                            "content": "Build flexible and maintainable user interfaces using our JSON-driven approach. Navigate through the pages to see different examples of what's possible.",
+                            "actions": ["Learn More"]
+                        }
+                    }
+                ]
+            },
+            {
+                "path": "features",
+                "title": "Features",
+                "sections": [
+                    {
+                        "type": "component",
+                        "component": "NavigationComponent",
+                        "inputs": {
+                            "navigation": {
+                                "title": "Dynamic UI Demo",
+                                "links": [
+                                    { "path": "home", "label": "Home" },
+                                    { "path": "features", "label": "Features" },
+                                    { "path": "testimonials", "label": "Testimonials" }
+                                ]
+                            }
+                        },
+                        "styles": {
+                            "marginBottom": "2rem"
+                        }
+                    },
+                    {
+                        "type": "container",
+                        "tag": "div",
+                        "styles": {
+                            "display": "flex",
+                            "gap": "24px",
+                            "margin": "40px 20px",
+                            "justifyContent": "center",
+                            "flexWrap": "wrap"
+                        },
+                        "children": [
+                            {
+                                "type": "component",
+                                "component": "MatCardComponent",
+                                "styles": {
+                                    "flex": "1",
+                                    "maxWidth": "300px",
+                                    "minWidth": "250px"
+                                },
+                                "inputs": {
+                                    "title": "Quick Setup",
+                                    "subtitle": "🚀",
+                                    "content": "Get started in minutes with our simple JSON configuration",
+                                    "actions": ["Learn More"]
+                                }
+                            },
+                            {
+                                "type": "component",
+                                "component": "MatCardComponent",
+                                "styles": {
+                                    "flex": "1",
+                                    "maxWidth": "300px",
+                                    "minWidth": "250px"
+                                },
+                                "inputs": {
+                                    "title": "Dynamic Updates",
+                                    "subtitle": "🔄",
+                                    "content": "Change your UI instantly by updating the backend JSON",
+                                    "actions": ["Try Now"]
+                                }
+                            },
+                            {
+                                "type": "component",
+                                "component": "MatCardComponent",
+                                "styles": {
+                                    "flex": "1",
+                                    "maxWidth": "300px",
+                                    "minWidth": "250px"
+                                },
+                                "inputs": {
+                                    "title": "Flexible Styling",
+                                    "subtitle": "🎨",
+                                    "content": "Complete control over styling with dynamic CSS properties",
+                                    "actions": ["Explore"]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "testimonials",
+                "title": "Testimonials",
+                "sections": [
+                    {
+                        "type": "component",
+                        "component": "NavigationComponent",
+                        "inputs": {
+                            "navigation": {
+                                "title": "Dynamic UI Demo",
+                                "links": [
+                                    { "path": "home", "label": "Home" },
+                                    { "path": "features", "label": "Features" },
+                                    { "path": "testimonials", "label": "Testimonials" }
+                                ]
+                            }
+                        },
+                        "styles": {
+                            "marginBottom": "2rem"
+                        }
+                    },
+                    {
+                        "type": "html",
+                        "tag": "div",
+                        "styles": {
+                            "backgroundColor": "#f8f8f8",
+                            "padding": "40px 20px",
+                            "textAlign": "center"
+                        },
+                        "children": [
+                            {
+                                "type": "html",
+                                "tag": "h2",
+                                "content": "What Our Users Say",
+                                "styles": {
+                                    "fontSize": "2em",
+                                    "marginBottom": "40px"
+                                }
+                            },
+                            {
+                                "type": "container",
+                                "tag": "div",
+                                "styles": {
+                                    "display": "flex",
+                                    "gap": "24px",
+                                    "justifyContent": "center",
+                                    "flexWrap": "wrap"
+                                },
+                                "children": [
+                                    {
+                                        "type": "component",
+                                        "component": "MatCardComponent",
+                                        "styles": {
+                                            "flex": "1",
+                                            "maxWidth": "400px",
+                                            "minWidth": "300px"
+                                        },
+                                        "inputs": {
+                                            "title": "Sarah Johnson",
+                                            "subtitle": "Lead Developer",
+                                            "content": "This dynamic UI builder has revolutionized how we create and maintain our user interfaces. The JSON-driven approach is brilliant!",
+                                            "image": "https://picsum.photos/seed/sarah/100",
+                                            "imageAlt": "Sarah Johnson"
+                                        }
+                                    },
+                                    {
+                                        "type": "component",
+                                        "component": "MatCardComponent",
+                                        "styles": {
+                                            "flex": "1",
+                                            "maxWidth": "400px",
+                                            "minWidth": "300px"
+                                        },
+                                        "inputs": {
+                                            "title": "Mike Chen",
+                                            "subtitle": "Product Manager",
+                                            "content": "The flexibility and ease of use are outstanding. We can update our UI on the fly without deploying new code!",
+                                            "image": "https://picsum.photos/seed/mike/100",
+                                            "imageAlt": "Mike Chen"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
