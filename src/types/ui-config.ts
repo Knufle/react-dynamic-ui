@@ -1,3 +1,5 @@
+import type { ComponentName } from '../components/DynamicComponent';
+
 export interface NavigationLink {
   path: string;
   label: string;
@@ -19,7 +21,7 @@ export interface BaseSection {
 
 export interface ComponentSection extends BaseSection {
   type: "component";
-  component: string;
+  component: ComponentName;
   inputs: Record<string, unknown>;
 }
 
