@@ -1,5 +1,6 @@
-import { Routes, Route, Navigate } from 'react-router';
+import { Routes, Route, Navigate, useLocation } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 import { UIConfig } from './types/ui-config';
 import { getUIConfig } from './services/uiConfigService';
 import { DynamicSection } from './components/DynamicSection';
@@ -9,6 +10,17 @@ function App() {
     queryKey: ['ui-config'],
     queryFn: getUIConfig
   });
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (config) {
+      const currentPage = config.pages.find(page => '/' + page.path === location.pathname);
+      if (currentPage) {
+        document.title = currentPage.title;
+      }
+    }
+  }, [config, location.pathname]);
 
   if (error) return <div>Error: {error.message}</div>;
   if (isLoading || !config) return <div>Loading...</div>;
