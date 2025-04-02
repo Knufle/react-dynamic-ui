@@ -2,15 +2,17 @@ interface HeroComponentProps {
   title: string;
   subtitle: string;
   ctaText: string;
-  style?: React.CSSProperties;
+  className?: string;
 }
 
-export default function HeroComponent({ title, subtitle, ctaText, style }: HeroComponentProps) {
+export default function HeroComponent({ title, subtitle, ctaText, ...props }: HeroComponentProps) {
   return (
-    <div style={{ textAlign: 'center', padding: '4rem 2rem', ...style }}>
-      <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>{title}</h1>
-      <p style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>{subtitle}</p>
-      <button style={{ fontSize: '1.2rem', padding: '0.8rem 2rem' }}>{ctaText}</button>
+    <div {...props}>
+      <h1 className="text-5xl mb-4">{title}</h1>
+      <p className="text-xl mb-8">{subtitle}</p>
+      <button className="text-lg px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+        {ctaText}
+      </button>
     </div>
   );
 }

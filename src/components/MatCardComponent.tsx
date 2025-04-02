@@ -1,60 +1,42 @@
 interface MatCardComponentProps {
   title: string;
   subtitle?: string;
-  content: string;
   actions?: string[];
   image?: string;
   imageAlt?: string;
-  style?: React.CSSProperties;
+  className?: string;
+  children: React.ReactNode;
 }
 
 export default function MatCardComponent({ 
   title, 
-  subtitle, 
-  content, 
+  subtitle,
+  children,
   actions = [], 
   image, 
   imageAlt,
-  style 
+  ...props
 }: MatCardComponentProps) {
   return (
-    <div style={{ 
-      border: '1px solid #e0e0e0',
-      borderRadius: '8px',
-      padding: '1.5rem',
-      backgroundColor: '#fff',
-      ...style
-    }}>
+    <div {...props}>
       {image && (
         <img 
           src={image} 
           alt={imageAlt || title}
-          style={{ 
-            width: '100%',
-            height: '200px',
-            objectFit: 'cover',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }} 
+          className="w-full h-50 object-cover rounded mb-4" 
         />
       )}
-      <h3 style={{ margin: '0 0 0.5rem' }}>{title}</h3>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
       {subtitle && (
-        <h4 style={{ margin: '0 0 1rem', color: '#666' }}>{subtitle}</h4>
+        <h4 className="text-gray-600 mb-4">{subtitle}</h4>
       )}
-      <p style={{ margin: '0 0 1.5rem' }}>{content}</p>
+      <p className="mb-6">{children}</p>
       {actions.length > 0 && (
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           {actions.map((action, index) => (
             <button 
               key={index}
-              style={{
-                padding: '0.5rem 1rem',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                backgroundColor: 'transparent',
-                cursor: 'pointer'
-              }}
+              className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
             >
               {action}
             </button>

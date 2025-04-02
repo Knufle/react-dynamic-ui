@@ -1,4 +1,5 @@
 import type { ComponentName } from '../components/DynamicComponent';
+import type { CSSProperties } from 'react';
 
 export interface NavigationLink {
   path: string;
@@ -10,34 +11,20 @@ export interface Navigation {
   links: NavigationLink[];
 }
 
-export interface ComponentStyles {
-  [key: string]: string | number;
+export interface Node {
+  node: ComponentName | keyof JSX.IntrinsicElements;
+  props: {
+    className?: string;
+    style?: CSSProperties;
+    children?: (Node | string)[] | string;
+    [key: string]: unknown;
+  };
 }
-
-export interface BaseSection {
-  type: "component" | "container" | "html";
-  styles?: ComponentStyles;
-}
-
-export interface ComponentSection extends BaseSection {
-  type: "component";
-  component: ComponentName;
-  inputs: Record<string, unknown>;
-}
-
-export interface ContainerSection extends BaseSection {
-  type: "container" | "html";
-  tag: string;
-  content?: string;
-  children?: Section[];
-}
-
-export type Section = ComponentSection | ContainerSection;
 
 export interface Page {
   path: string;
   title: string;
-  sections: Section[];
+  sections: Node[];
 }
 
 export interface UIConfig {
