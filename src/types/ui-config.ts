@@ -1,6 +1,3 @@
-import type { ComponentName } from '../components/DynamicComponent';
-import type { CSSProperties } from 'react';
-
 export interface NavigationLink {
   path: string;
   label: string;
@@ -12,10 +9,8 @@ export interface Navigation {
 }
 
 export interface Node {
-  node: ComponentName | keyof JSX.IntrinsicElements;
+  node: string;
   props: {
-    className?: string;
-    style?: CSSProperties;
     children?: (Node | string)[] | string;
     [key: string]: unknown;
   };
