@@ -6,10 +6,8 @@ export const components = {
   NavigationComponent: lazy(() => import('./NavigationComponent')),
 } as const;
 
-export type ComponentName = keyof typeof components | keyof JSX.IntrinsicElements;
-
 interface DynamicComponentProps {
-  component: ComponentName;
+  component: string;
   props: any;
 }
 
