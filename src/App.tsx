@@ -1,21 +1,17 @@
-import { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
 import { UIConfig } from './types/ui-config';
 import { getUIConfig } from './services/uiConfigService';
 import { DynamicSection } from './components/DynamicSection';
 
 function App() {
-  const [config, setConfig] = useState<UIConfig | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { data: config, error, isLoading } = useQuery<UIConfig>({
+    queryKey: ['ui-config'],
+    queryFn: getUIConfig
+  });
 
-  useEffect(() => {
-    getUIConfig()
-      .then(setConfig)
-      .catch(err => setError(err.message));
-  }, []);
-
-  if (error) return <div>Error: {error}</div>;
-  if (!config) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (isLoading || !config) return <div>Loading...</div>;
 
   return (
     <Routes>
